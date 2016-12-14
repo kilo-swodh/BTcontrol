@@ -11,6 +11,17 @@
     android:background="@color/backgroud"
     tools:context="com.example.a45556.btcontrol.MainActivity">
 
+    <android.support.v7.widget.AppCompatTextView
+        android:text="闪烁"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cb_1"/>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ll_1"/>
     <LinearLayout
         android:id="@+id/ll_1"
         android:layout_margin="30dp"
@@ -36,6 +47,11 @@
             />
     </LinearLayout>
 
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ll_2"/>
     <LinearLayout
         android:id="@+id/ll_2"
         android:layout_margin="30dp"
@@ -60,6 +76,11 @@
             />
     </LinearLayout>
 
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ll_3"/>
     <LinearLayout
         android:id="@+id/ll_3"
         android:layout_margin="30dp"
@@ -84,6 +105,11 @@
             />
     </LinearLayout>
 
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ll_4"/>
     <LinearLayout
         android:id="@+id/ll_4"
         android:layout_margin="30dp"
@@ -108,7 +134,13 @@
             />
     </LinearLayout>
 
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ll_5"/>
     <LinearLayout
+        android:id="@+id/ll_5"
         android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -10,6 +10,8 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton settings;
     private SeekBar skLed1,skLed2,skLed3,skLed4,skLed5;
-    TextView tv_setting,tv_info_led1,tv_info_led2,tv_info_led3,tv_info_led4,tv_info_led5;
+    private TextView tv_setting,tv_info_led1,tv_info_led2,tv_info_led3,tv_info_led4,tv_info_led5;
+    private CheckBox cb1,cb2,cb3,cb4,cb5;
 
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
@@ -59,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         tv_info_led4 = (TextView)findViewById(R.id.tv_info_led4);
         skLed5 = (SeekBar)findViewById(R.id.sk_led5);
         tv_info_led5 = (TextView)findViewById(R.id.tv_info_led5);
+
+        cb1 = (CheckBox)findViewById(R.id.cb_1);
+        cb2 = (CheckBox)findViewById(R.id.cb_2);
+        cb3 = (CheckBox)findViewById(R.id.cb_3);
+        cb4 = (CheckBox)findViewById(R.id.cb_4);
+        cb5 = (CheckBox)findViewById(R.id.cb_5);
 
         initListener();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -129,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
      * @Decription 初始化各个按钮效果
      **/
     private void initListener(){
+
+        /*渐变SeekBar部分*/
         skLed1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -138,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 deLost = new StringBuilder();
-                deLost.append("1#"+seekBar.getProgress());
+                deLost.append("$$1#"+seekBar.getProgress());
             }
 
             @Override
@@ -157,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 deLost = new StringBuilder();
-                deLost.append("2#"+seekBar.getProgress());
+                deLost.append("$$2#"+seekBar.getProgress());
             }
 
             @Override
@@ -176,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 deLost = new StringBuilder();
-                deLost.append("3#"+seekBar.getProgress());
+                deLost.append("$$3#"+seekBar.getProgress());
             }
 
             @Override
@@ -195,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 deLost = new StringBuilder();
-                deLost.append("4#"+seekBar.getProgress());
+                deLost.append("$$4#"+seekBar.getProgress());
             }
 
             @Override
@@ -214,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 deLost = new StringBuilder();
-                deLost.append("5#"+seekBar.getProgress());
+                deLost.append("$$5#"+seekBar.getProgress());
             }
 
             @Override
@@ -224,7 +235,73 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*闪烁CheckBox部分*/
+        cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    sendMessage("%%1b*");
+                    skLed1.setEnabled(false);
+                }else {
+                    sendMessage("%%1o*");
+                    skLed1.setEnabled(true);
+                }
+            }
+        });
 
+        cb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    sendMessage("%%2b*");
+                    skLed2.setEnabled(false);
+                }else {
+                    sendMessage("%%2o*");
+                    skLed2.setEnabled(true);
+                }
+            }
+        });
+
+        cb3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    sendMessage("%%3b*");
+                    skLed3.setEnabled(false);
+                }else {
+                    sendMessage("%%3o*");
+                    skLed3.setEnabled(true);
+                }
+            }
+        });
+
+        cb4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    sendMessage("%%4b*");
+                    skLed4.setEnabled(false);
+                }else {
+                    sendMessage("%%4o*");
+                    skLed4.setEnabled(true);
+                }
+            }
+        });
+
+        cb5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    sendMessage("%%5b*");
+                    skLed5.setEnabled(false);
+                }else {
+                    sendMessage("%%5o*");
+                    skLed5.setEnabled(true);
+                }
+            }
+        });
+
+        /*功能键部分*/
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
