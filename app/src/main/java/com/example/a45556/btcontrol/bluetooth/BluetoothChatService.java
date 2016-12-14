@@ -348,7 +348,7 @@ public class BluetoothChatService {
                 try {
                     // 读取输入流
                     bytes = mmInStream.read(buffer);
-                    Log.d(TAG, "wutingyou 收到数据");
+                    Log.d(TAG, "收到数据");
                     if(bytes>0)
                         mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
                                 .sendToTarget();

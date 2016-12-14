@@ -12,15 +12,19 @@
     tools:context="com.example.a45556.btcontrol.MainActivity">
 
     <LinearLayout
+        android:id="@+id/ll_1"
         android:layout_margin="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@+id/ll_2"
+        >
         <SeekBar
             android:id="@+id/sk_led1"
             android:layout_width="300dp"
             android:layout_height="20dp"
-            android:max="100"
-            android:progress="100"
+            android:max="70"
+            android:progress="70"
             />
         <TextView
             android:id="@+id/tv_info_led1"
@@ -28,9 +32,103 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="100%亮度"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="end"
             />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_2"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@+id/ll_3">
+        <SeekBar
+            android:id="@+id/sk_led2"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:max="70"
+            android:progress="70"
+            />
+        <TextView
+            android:id="@+id/tv_info_led2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="100%亮度"
+            android:layout_gravity="end"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_3"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <SeekBar
+            android:id="@+id/sk_led3"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:max="70"
+            android:progress="70"
+            />
+        <TextView
+            android:id="@+id/tv_info_led3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="100%亮度"
+            android:layout_gravity="end"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_4"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/ll_3">
+        <SeekBar
+            android:id="@+id/sk_led4"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:max="70"
+            android:progress="70"
+            />
+        <TextView
+            android:id="@+id/tv_info_led4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="100%亮度"
+            android:layout_gravity="end"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/ll_4">
+        <SeekBar
+            android:id="@+id/sk_led5"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:max="70"
+            android:progress="70"
+            />
+        <TextView
+            android:id="@+id/tv_info_led5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="100%亮度"
+            android:layout_gravity="end"
+            />
     </LinearLayout>
 
     <ImageButton
@@ -38,7 +136,7 @@
         android:layout_height="40dp"
         android:background="@mipmap/settings"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:id="@+id/settings"/>
 
     <TextView
@@ -46,7 +144,7 @@
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:text="设置自定义编码"
         android:textColor="@color/alpha_black"

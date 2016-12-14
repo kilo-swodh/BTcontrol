@@ -30,8 +30,8 @@ import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.TOAST;
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton settings;
-    private SeekBar skLed1;
-    TextView tv_setting,tv_info_led1;
+    private SeekBar skLed1,skLed2,skLed3,skLed4,skLed5;
+    TextView tv_setting,tv_info_led1,tv_info_led2,tv_info_led3,tv_info_led4,tv_info_led5;
 
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
@@ -47,10 +47,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         settings=(ImageButton)findViewById(R.id.settings);
-        tv_setting = (TextView) findViewById(R.id.tv_setting);
+        tv_setting = (TextView)findViewById(R.id.tv_setting);
 
         skLed1 = (SeekBar)findViewById(R.id.sk_led1);
         tv_info_led1 = (TextView)findViewById(R.id.tv_info_led1);
+        skLed2 = (SeekBar)findViewById(R.id.sk_led2);
+        tv_info_led2 = (TextView)findViewById(R.id.tv_info_led2);
+        skLed3 = (SeekBar)findViewById(R.id.sk_led3);
+        tv_info_led3 = (TextView)findViewById(R.id.tv_info_led3);
+        skLed4 = (SeekBar)findViewById(R.id.sk_led4);
+        tv_info_led4 = (TextView)findViewById(R.id.tv_info_led4);
+        skLed5 = (SeekBar)findViewById(R.id.sk_led5);
+        tv_info_led5 = (TextView)findViewById(R.id.tv_info_led5);
 
         initListener();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -124,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
         skLed1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_info_led1.setText(i+"%亮度");
+                tv_info_led1.setText((i+30)+"%亮度");
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 deLost = new StringBuilder();
-                deLost.append(seekBar.getProgress());
+                deLost.append("1#"+seekBar.getProgress());
             }
 
             @Override
@@ -139,6 +147,83 @@ public class MainActivity extends AppCompatActivity {
                 sendMessage(deLost.toString());
             }
         });
+
+        skLed2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                tv_info_led2.setText((i+30)+"%亮度");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                deLost = new StringBuilder();
+                deLost.append("2#"+seekBar.getProgress());
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                deLost.append("&"+seekBar.getProgress()+"*");
+                sendMessage(deLost.toString());
+            }
+        });
+
+        skLed3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                tv_info_led3.setText((i+30)+"%亮度");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                deLost = new StringBuilder();
+                deLost.append("3#"+seekBar.getProgress());
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                deLost.append("&"+seekBar.getProgress()+"*");
+                sendMessage(deLost.toString());
+            }
+        });
+
+        skLed4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                tv_info_led4.setText((i+30)+"%亮度");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                deLost = new StringBuilder();
+                deLost.append("4#"+seekBar.getProgress());
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                deLost.append("&"+seekBar.getProgress()+"*");
+                sendMessage(deLost.toString());
+            }
+        });
+
+        skLed5.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                tv_info_led5.setText((i+30)+"%亮度");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                deLost = new StringBuilder();
+                deLost.append("5#"+seekBar.getProgress());
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                deLost.append("&"+seekBar.getProgress()+"*");
+                sendMessage(deLost.toString());
+            }
+        });
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
                     byte[] readBuf = (byte[]) msg.obj;
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
+                    Log.d("kilo","readMessage:"+readMessage);
                     break;
                 case MESSAGE_DEVICE_NAME:
                     // save the connected device's name
@@ -226,5 +312,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
 }
