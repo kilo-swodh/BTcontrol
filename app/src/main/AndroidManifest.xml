@@ -28,7 +28,7 @@
             android:configChanges="orientation|keyboardHidden" />
 
         <activity
-            android:name=".CodeSettingActivity"
+            android:name=".LightSettingActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"/>
 

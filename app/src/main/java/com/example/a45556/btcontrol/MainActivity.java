@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
         tv_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent serverIntent = new Intent(MainActivity.this, CodeSettingActivity.class);
+                Intent serverIntent = new Intent(MainActivity.this, LightSettingActivity.class);
                 startActivity(serverIntent);
             }
         });
