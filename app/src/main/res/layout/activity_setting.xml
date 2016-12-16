@@ -19,8 +19,7 @@
         <ImageButton
             android:id="@+id/btnleft"
             android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@mipmap/left" />
+            android:layout_height="35dp"/>
         
         <EditText
             android:id="@+id/et_left"
@@ -42,8 +41,7 @@
         <ImageButton
             android:id="@+id/btnright"
             android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@mipmap/right" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/et_right"
@@ -65,8 +63,7 @@
         <ImageButton
             android:id="@+id/btngo"
             android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@mipmap/up" />
+            android:layout_height="35dp"/>
 
         <EditText
             android:id="@+id/et_go"
@@ -90,8 +87,7 @@
         <ImageButton
             android:id="@+id/btnback"
             android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@mipmap/back" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/et_back"
@@ -114,8 +110,7 @@
         <ImageButton
             android:id="@+id/btnstop"
             android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@mipmap/stop"/>
+            android:layout_height="35dp"/>
 
         <EditText
             android:id="@+id/et_stop"

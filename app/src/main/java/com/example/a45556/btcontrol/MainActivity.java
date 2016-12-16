@@ -21,6 +21,12 @@ import com.example.a45556.btcontrol.bluetooth.BluetoothChatService;
 import com.example.a45556.btcontrol.bluetooth.DeviceListActivity;
 import com.example.a45556.btcontrol.utils.PreferenceUtil;
 
+import static com.example.a45556.btcontrol.R.id.tv_info_led1;
+import static com.example.a45556.btcontrol.R.id.tv_info_led2;
+import static com.example.a45556.btcontrol.R.id.tv_info_led3;
+import static com.example.a45556.btcontrol.R.id.tv_info_led4;
+import static com.example.a45556.btcontrol.R.id.tv_info_led5;
+import static com.example.a45556.btcontrol.R.id.tv_setting;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.DEVICE_NAME;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_DEVICE_NAME;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_READ;
@@ -33,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton settings;
     private SeekBar skLed1,skLed2,skLed3,skLed4,skLed5;
-    private TextView tv_setting,tv_info_led1,tv_info_led2,tv_info_led3,tv_info_led4,tv_info_led5;
+    private TextView tvSetting,tvLED1,tvLED2,tvLED3,tvLED4,tvLED5;
     private CheckBox cb1,cb2,cb3,cb4,cb5;
 
     private static final int REQUEST_CONNECT_DEVICE = 1;
@@ -50,18 +56,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         settings=(ImageButton)findViewById(R.id.settings);
-        tv_setting = (TextView)findViewById(R.id.tv_setting);
+        tvSetting = (TextView)findViewById(tv_setting);
 
-        skLed1 = (SeekBar)findViewById(R.id.sk_led1);
-        tv_info_led1 = (TextView)findViewById(R.id.tv_info_led1);
-        skLed2 = (SeekBar)findViewById(R.id.sk_led2);
-        tv_info_led2 = (TextView)findViewById(R.id.tv_info_led2);
-        skLed3 = (SeekBar)findViewById(R.id.sk_led3);
-        tv_info_led3 = (TextView)findViewById(R.id.tv_info_led3);
-        skLed4 = (SeekBar)findViewById(R.id.sk_led4);
-        tv_info_led4 = (TextView)findViewById(R.id.tv_info_led4);
-        skLed5 = (SeekBar)findViewById(R.id.sk_led5);
-        tv_info_led5 = (TextView)findViewById(R.id.tv_info_led5);
+        skLed1 = (SeekBar)findViewById(R.id.sk_live_led1);
+        tvLED1 = (TextView)findViewById(tv_info_led1);
+        skLed2 = (SeekBar)findViewById(R.id.sk_live_led2);
+        tvLED2 = (TextView)findViewById(tv_info_led2);
+        skLed3 = (SeekBar)findViewById(R.id.sk_live_led3);
+        tvLED3 = (TextView)findViewById(tv_info_led3);
+        skLed4 = (SeekBar)findViewById(R.id.sk_live_led4);
+        tvLED4 = (TextView)findViewById(tv_info_led4);
+        skLed5 = (SeekBar)findViewById(R.id.sk_live_led5);
+        tvLED5 = (TextView)findViewById(tv_info_led5);
 
         cb1 = (CheckBox)findViewById(R.id.cb_1);
         cb2 = (CheckBox)findViewById(R.id.cb_2);
@@ -143,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         skLed1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_info_led1.setText((i+30)+"%亮度");
+                tvLED1.setText((i+30)+"%亮度");
             }
 
             @Override
@@ -162,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         skLed2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_info_led2.setText((i+30)+"%亮度");
+                tvLED2.setText((i+30)+"%亮度");
             }
 
             @Override
@@ -181,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         skLed3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_info_led3.setText((i+30)+"%亮度");
+                tvLED3.setText((i+30)+"%亮度");
             }
 
             @Override
@@ -200,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         skLed4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_info_led4.setText((i+30)+"%亮度");
+                tvLED4.setText((i+30)+"%亮度");
             }
 
             @Override
@@ -219,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         skLed5.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tv_info_led5.setText((i+30)+"%亮度");
+                tvLED5.setText((i+30)+"%亮度");
             }
 
             @Override
@@ -310,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tv_setting.setOnClickListener(new View.OnClickListener() {
+        tvSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent serverIntent = new Intent(MainActivity.this, LightSettingActivity.class);

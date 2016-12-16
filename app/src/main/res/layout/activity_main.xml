@@ -31,7 +31,7 @@
         android:layout_above="@+id/ll_2"
         >
         <SeekBar
-            android:id="@+id/sk_led1"
+            android:id="@+id/sk_live_led1"
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
@@ -60,7 +60,7 @@
         android:orientation="vertical"
         android:layout_above="@+id/ll_3">
         <SeekBar
-            android:id="@+id/sk_led2"
+            android:id="@+id/sk_live_led2"
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
@@ -89,7 +89,7 @@
         android:orientation="vertical"
         android:layout_centerInParent="true">
         <SeekBar
-            android:id="@+id/sk_led3"
+            android:id="@+id/sk_live_led3"
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
@@ -118,7 +118,7 @@
         android:orientation="vertical"
         android:layout_below="@+id/ll_3">
         <SeekBar
-            android:id="@+id/sk_led4"
+            android:id="@+id/sk_live_led4"
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
@@ -147,7 +147,7 @@
         android:orientation="vertical"
         android:layout_below="@+id/ll_4">
         <SeekBar
-            android:id="@+id/sk_led5"
+            android:id="@+id/sk_live_led5"
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
@@ -178,7 +178,7 @@
         android:gravity="center"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:text="设置自定义编码"
+        android:text="预约控制"
         android:textColor="@color/alpha_black"
         android:textSize="16sp"
         />

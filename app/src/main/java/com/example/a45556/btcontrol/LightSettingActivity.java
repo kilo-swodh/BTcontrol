@@ -22,7 +22,7 @@ public class LightSettingActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.main);
+		this.setContentView(R.layout.light_setting);
 		
 		viewPager = (ViewPager) findViewById(R.id.viewpager);
         SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
@@ -34,12 +34,14 @@ public class LightSettingActivity extends FragmentActivity {
         manager.addFragment(new PageFragment());
         manager.addFragment(new PageFragment());
         manager.addFragment(new PageFragment());
+        manager.addFragment(new PageFragment());
+        manager.addFragment(new PageFragment());
         ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
         viewPager.setAdapter(adapter);
 		
         springIndicator.setViewPager(viewPager);
 	}
 	private List<String> getTitles(){
-        return Lists.newArrayList("1", "2", "3", "4");
+        return Lists.newArrayList("Step1", "Step2", "Step3", "Step4","Step5","Step6");
     }
 }

@@ -6,7 +6,7 @@
     <color name="blue">#FF666666</color>
     <color name="light_blue">#727272</color>
     <color name="alpha_blue">#aaaaaa</color>
-    <color name="backgroud">#999999</color>
+    <color name="backgroud">#20000000</color>
 
     <array name="colors">
         <item>@color/colorBluePrimary</item>
