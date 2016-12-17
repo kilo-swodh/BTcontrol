@@ -64,20 +64,22 @@ public class PageFragment  extends Fragment{
 
 	private void initAdapter(){
 		spinner1.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,
-				new String[]{"较慢","一般","较快"}));
+				new String[]{"不闪","较快","一般","较慢"}));
 		spinner2.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,
-				new String[]{"较慢","一般","较快"}));
+				new String[]{"不闪","较快","一般","较慢"}));
 		spinner3.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,
-				new String[]{"较慢","一般","较快"}));
+				new String[]{"不闪","较快","一般","较慢"}));
 		spinner4.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,
-				new String[]{"较慢","一般","较快"}));
+				new String[]{"不闪","较快","一般","较慢"}));
 		spinner5.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,
-				new String[]{"较慢","一般","较快"}));
+				new String[]{"不闪","较快","一般","较慢"}));
+		/*
 		spinner1.setSelection(1,true);
 		spinner2.setSelection(1,true);
 		spinner3.setSelection(1,true);
 		spinner4.setSelection(1,true);
 		spinner5.setSelection(1,true);
+		*/
 	}
 
 	private void initListener(){
@@ -155,6 +157,10 @@ public class PageFragment  extends Fragment{
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+				if (i!=0)
+					seekBar1.setEnabled(false);
+				else
+					seekBar1.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
                 settingActivity.rate[getPosition()][0] = i;
             }
@@ -165,6 +171,10 @@ public class PageFragment  extends Fragment{
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+				if (i!=0)
+					seekBar2.setEnabled(false);
+				else
+					seekBar2.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
                 settingActivity.rate[getPosition()][1] = i;
             }
@@ -175,6 +185,10 @@ public class PageFragment  extends Fragment{
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+				if (i!=0)
+					seekBar3.setEnabled(false);
+				else
+					seekBar3.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
                 settingActivity.rate[getPosition()][2] = i;
             }
@@ -185,6 +199,10 @@ public class PageFragment  extends Fragment{
         spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+				if (i!=0)
+					seekBar4.setEnabled(false);
+				else
+					seekBar4.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
                 settingActivity.rate[getPosition()][3] = i;
             }
@@ -195,6 +213,10 @@ public class PageFragment  extends Fragment{
         spinner5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+				if (i!=0)
+					seekBar5.setEnabled(false);
+				else
+					seekBar5.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
                 settingActivity.rate[getPosition()][4] = i;
             }
@@ -216,7 +238,7 @@ public class PageFragment  extends Fragment{
 			@Override
 			public void afterTextChanged(Editable s) {
 				LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-				settingActivity.time[getPosition()]= s.toString();
+				settingActivity.time[getPosition()] = s.toString();
 			}
 		});
 	}

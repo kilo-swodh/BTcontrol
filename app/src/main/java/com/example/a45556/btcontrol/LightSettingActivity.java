@@ -20,7 +20,7 @@ import github.chenupt.springindicator.SpringIndicator;
 public class LightSettingActivity extends FragmentActivity {
     public static int[][] rate = new int[6][5];
     public static int[][] light = new int[6][5];
-    public static String[] time = new String[5];
+    public static String[] time = new String[]{"0","0","0","0","0","0"};
 
 	private ViewPager viewPager;
 	private List<com.example.a45556.btcontrol.PageFragment> fragments;

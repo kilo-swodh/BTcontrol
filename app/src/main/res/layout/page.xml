@@ -30,7 +30,7 @@
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
-            android:progress="70"
+            android:progress="0"
             />
         <TextView
             android:id="@+id/tv_led1"
@@ -60,7 +60,7 @@
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
-            android:progress="70"
+            android:progress="0"
             />
         <TextView
             android:id="@+id/tv_led2"
@@ -90,7 +90,7 @@
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
-            android:progress="70"
+            android:progress="0"
             />
         <TextView
             android:id="@+id/tv_led3"
@@ -120,7 +120,7 @@
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
-            android:progress="70"
+            android:progress="0"
             />
         <TextView
             android:id="@+id/tv_led4"
@@ -150,7 +150,7 @@
             android:layout_width="300dp"
             android:layout_height="20dp"
             android:max="70"
-            android:progress="70"
+            android:progress="0"
             />
         <TextView
             android:id="@+id/tv_led5"
@@ -164,7 +164,7 @@
 
     <TextView
         android:id="@+id/tv_tip"
-        android:text="该场景的时间(秒):"
+        android:text="时间:"
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
         android:layout_marginBottom="15dp"/>
     <EditText
         android:id="@+id/ed_time"
-        android:hint="000"
+        android:hint="0s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tv_tip"

@@ -28,9 +28,20 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/btn_save"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    android:id="@+id/btn_save"
+    android:layout_width="45dp"
+    android:layout_height="45dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="15dp"
+    android:layout_marginRight="15dp"
+    android:background="@mipmap/save"
+    />
+
+    <ImageButton
+        android:id="@+id/btn_run"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="15dp"
