@@ -19,6 +19,8 @@ package github.chenupt.multiplemodel.viewpager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.example.a45556.btcontrol.PageFragment;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,6 +71,13 @@ public class PagerManager {
 
     public PagerManager addFragment(Fragment fragment){
         fragmentList.add(fragment);
+        return this;
+    }
+
+    public PagerManager addFragment(Fragment fragment,int position){
+        fragmentList.add(fragment);
+        PageFragment pageFragment = (PageFragment)fragmentList.get(position);
+        pageFragment.setPosition(position);
         return this;
     }
 

@@ -55,11 +55,11 @@ public class CodeSettingActivity extends AppCompatActivity {
      * @Decription 保存编码
      **/
     private void saveToPreference(String down,String up,String left,String right,String stop){
-        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.DOWN_CODE,down);
-        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.UP_CODE,up);
-        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.LEFT_CODE,left);
-        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.RIGHT_CODE,right);
-        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.STOP_CODE,stop);
+        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.RATE1_CODE,down);
+        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.RATE2_CODE,up);
+        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.RATE3_CODE,left);
+        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.RATE4_CODE,right);
+        PreferenceUtil.getInstance().writePreferences(PreferenceUtil.RATE5_CODE,stop);
     }
 
     /**
@@ -91,5 +91,4 @@ public class CodeSettingActivity extends AppCompatActivity {
 
         return "";
     }
-
 }

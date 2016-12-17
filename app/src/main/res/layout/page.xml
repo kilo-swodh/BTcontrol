@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroud" >
+
     <android.support.v7.widget.AppCompatTextView
         android:text="闪烁\n速率"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_1"
+        android:layout_above="@+id/sp_1"
         android:layout_marginLeft="15dp"/>
 
     <Spinner
@@ -160,10 +161,11 @@
             android:layout_gravity="end"
             />
     </LinearLayout>
+
     <TextView
         android:id="@+id/tv_tip"
         android:text="该场景的时间(秒):"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
