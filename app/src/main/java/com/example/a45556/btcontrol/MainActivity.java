@@ -26,7 +26,6 @@ import static com.example.a45556.btcontrol.R.id.tv_info_led2;
 import static com.example.a45556.btcontrol.R.id.tv_info_led3;
 import static com.example.a45556.btcontrol.R.id.tv_info_led4;
 import static com.example.a45556.btcontrol.R.id.tv_info_led5;
-import static com.example.a45556.btcontrol.R.id.tv_setting;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.DEVICE_NAME;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_DEVICE_NAME;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_READ;
@@ -37,9 +36,9 @@ import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.TOAST;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton settings;
+    private ImageButton btnSettings,btnCustom;
     private SeekBar skLed1,skLed2,skLed3,skLed4,skLed5;
-    private TextView tvSetting,tvLED1,tvLED2,tvLED3,tvLED4,tvLED5;
+    private TextView tvLED1,tvLED2,tvLED3,tvLED4,tvLED5;
     private CheckBox cb1,cb2,cb3,cb4,cb5;
 
     private static final int REQUEST_CONNECT_DEVICE = 1;
@@ -55,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        settings=(ImageButton)findViewById(R.id.settings);
-        tvSetting = (TextView)findViewById(tv_setting);
+        btnSettings =(ImageButton)findViewById(R.id.settings);
+        btnCustom = (ImageButton)findViewById(R.id.custom);
 
         skLed1 = (SeekBar)findViewById(R.id.sk_live_led1);
         tvLED1 = (TextView)findViewById(tv_info_led1);
@@ -308,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         /*功能键部分*/
-        settings.setOnClickListener(new View.OnClickListener() {
+        btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent serverIntent = new Intent(MainActivity.this, DeviceListActivity.class);
@@ -316,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tvSetting.setOnClickListener(new View.OnClickListener() {
+        btnCustom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent serverIntent = new Intent(MainActivity.this, LightSettingActivity.class);

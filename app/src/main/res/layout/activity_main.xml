@@ -164,22 +164,20 @@
     </LinearLayout>
 
     <ImageButton
+        android:id="@+id/settings"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@mipmap/settings"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/settings"/>
+        />
 
-    <TextView
-        android:id="@+id/tv_setting"
-        android:layout_width="80dp"
+    <ImageButton
+        android:id="@+id/custom"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:gravity="center"
+        android:background="@mipmap/custom"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:text="预约控制"
-        android:textColor="@color/alpha_black"
-        android:textSize="16sp"
         />
 </RelativeLayout>

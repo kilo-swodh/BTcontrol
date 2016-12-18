@@ -8,30 +8,35 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.a45556.btcontrol.utils.PreferenceUtil;
+import com.example.a45556.btcontrol.utils.ArrayUtil;
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import github.chenupt.multiplemodel.viewpager.ModelPagerAdapter;
 import github.chenupt.multiplemodel.viewpager.PagerManager;
 import github.chenupt.springindicator.SpringIndicator;
 
+import static com.example.a45556.btcontrol.utils.ArrayUtil.lastLight;
+import static com.example.a45556.btcontrol.utils.ArrayUtil.light;
+import static com.example.a45556.btcontrol.utils.ArrayUtil.rate;
+import static com.example.a45556.btcontrol.utils.ArrayUtil.times;
+
 public class LightSettingActivity extends FragmentActivity {
-    public static int[][] rate = new int[6][5];
-    public static int[][] light = new int[6][5];
-    public static String[] time = new String[]{"0","0","0","0","0","0"};
+    List<Integer> validPositons;
 
 	private ViewPager viewPager;
 	private List<com.example.a45556.btcontrol.PageFragment> fragments;
 	private FragmentManager fragmentManager;
-	private ImageButton btnSave;
+	private ImageButton btnRun;
+    private ArrayUtil arrayUtil;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.light_setting);
-		btnSave = (ImageButton)findViewById(R.id.btn_save);
+		btnRun = (ImageButton)findViewById(R.id.btn_run);
 		viewPager = (ViewPager) findViewById(R.id.viewpager);
         SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
         //初始化ViewPager
@@ -46,40 +51,87 @@ public class LightSettingActivity extends FragmentActivity {
         manager.addFragment(new PageFragment(),5);
         ModelPagerAdapter adapter = new ModelPagerAdapter(getSupportFragmentManager(), manager);
         viewPager.setAdapter(adapter);
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        arrayUtil = ArrayUtil.getInstance();
+        for (int i =0 ;i<6;i++){                        //清理上一次的记录
+            for (int j = 0;j<5;j++){
+                rate[i][j] = 0;
+                light[i][j] = 0;
+            }
+            times[i] = "0";
+        }
+        for (int i =0; i<5;i++){
+            lastLight[i] = 0;
+        }
+        btnRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i :rate[0]){
-                    Log.d("Rate", i+"");
-                }
-                for (int i :light[0]){
-                    Log.d("Light", i+"");
-                }
-                Log.d("Time", time[0]);
+                ParseData();
                 finish();
             }
         });
         springIndicator.setViewPager(viewPager);
     }
 
-    private void savePre(PagerManager manager,int i){
-        PreferenceUtil preferenceUtil = PreferenceUtil.getInstance();
-        PageFragment fragment = (PageFragment)manager.getItem(i);
-        Bundle info = fragment.getInfoBundle();
-        StringBuilder builder = new StringBuilder();
-        builder.append(info.getString("time","0")).append("&");
-        int[] arr1 = info.getIntArray("rate");
-        for (int temp:arr1){
-            builder.append(temp).append("&");
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void ParseData(){
+        validPositons = new ArrayList<>();
+        for (int i =0;i < times.length;i++){
+            String time = times[i];
+            if (time != "0" && time != "00" && time != "000"){
+                validPositons.add(i);
+            }
         }
-        int[] arr2 = info.getIntArray("rate");
-        for (int temp:arr2){
-            builder.append(temp).append("&");
+        for (Integer i : validPositons){
+            List<String> cmd = getCmdString(i.intValue());
+            Log.d("Kilo", "Position: iiiiiiiiiiiiiiiiiiiiis "+ i);
+            Log.d("Kilo", "Time: iiiiiiiiiiiis "+ times[i]);
+            for (String str:cmd)
+                Log.d("Kilo", str);
         }
-        preferenceUtil.writePreferences("step"+i,builder.toString());
+    }
+
+    private List<String> getCmdString(int position){
+        List<String> cmd = new ArrayList<>();
+        StringBuilder builder;
+        for (int i = 0;i < 5;i++){
+            builder = new StringBuilder();
+            if (rate[position][i] == 0){
+                if (position == 0){
+                    builder.append("$$"+(i+1)+"#");
+                    builder.append("0&"+light[position][i]+"*");
+                    cmd.add(builder.toString());
+                    lastLight[i] = light[position][i];
+                }else {
+                    builder.append("$$"+(i+1)+"#");
+                    builder.append(lastLight[i]+"&"+light[position][i]+"*");
+                    cmd.add(builder.toString());
+                    lastLight[i] = light[position][i];
+                }
+            }else {
+                builder.append("%%"+(i+1));
+                switch (rate[position][i]){
+                    case 1:
+                        builder.append("a*");
+                        break;
+                    case 2:
+                        builder.append("b*");
+                        break;
+                    case 3:
+                        builder.append("c*");
+                        break;
+                }
+                cmd.add(builder.toString());
+            }
+        }
+        return cmd;
     }
 
 	private List<String> getTitles(){
         return Lists.newArrayList("Step1", "Step2", "Step3", "Step4","Step5","Step6");
     }
+
 }

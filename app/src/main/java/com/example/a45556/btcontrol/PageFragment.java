@@ -15,6 +15,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.a45556.btcontrol.utils.ArrayUtil;
+
 import static com.example.a45556.btcontrol.R.layout.page;
 
 public class PageFragment  extends Fragment{
@@ -25,6 +27,7 @@ public class PageFragment  extends Fragment{
 	private TextView tvLED1,tvLED2,tvLED3,tvLED4,tvLED5;
 
     private int position;
+	private ArrayUtil arrayUtil;
 /*
 	private int fragmentID;
 
@@ -57,6 +60,7 @@ public class PageFragment  extends Fragment{
 		tvLED3 = (TextView)root.findViewById(R.id.tv_led3);
 		tvLED4 = (TextView)root.findViewById(R.id.tv_led4);
 		tvLED5 = (TextView)root.findViewById(R.id.tv_led5);
+		arrayUtil = ArrayUtil.getInstance();
 		initAdapter();
 		initListener();
 		return root;
@@ -94,7 +98,7 @@ public class PageFragment  extends Fragment{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.light[getPosition()][0] = seekBar.getProgress();
+                arrayUtil.light[getPosition()][0] = seekBar.getProgress();
             }
 		});
 
@@ -108,7 +112,7 @@ public class PageFragment  extends Fragment{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.light[getPosition()][1] = seekBar.getProgress();
+				arrayUtil.light[getPosition()][1] = seekBar.getProgress();
             }
 		});
 
@@ -122,7 +126,7 @@ public class PageFragment  extends Fragment{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.light[getPosition()][2] = seekBar.getProgress();
+				arrayUtil.light[getPosition()][2] = seekBar.getProgress();
             }
 		});
 
@@ -136,7 +140,7 @@ public class PageFragment  extends Fragment{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.light[getPosition()][3] = seekBar.getProgress();
+				arrayUtil.light[getPosition()][3] = seekBar.getProgress();
             }
 		});
 
@@ -150,7 +154,7 @@ public class PageFragment  extends Fragment{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.light[getPosition()][4] = seekBar.getProgress();}
+				arrayUtil.light[getPosition()][4] = seekBar.getProgress();}
 		});
 
         //闪烁频率*********************
@@ -162,7 +166,7 @@ public class PageFragment  extends Fragment{
 				else
 					seekBar1.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.rate[getPosition()][0] = i;
+				arrayUtil.rate[getPosition()][0] = i;
             }
 
             @Override
@@ -176,7 +180,7 @@ public class PageFragment  extends Fragment{
 				else
 					seekBar2.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.rate[getPosition()][1] = i;
+				arrayUtil.rate[getPosition()][1] = i;
             }
 
             @Override
@@ -190,7 +194,7 @@ public class PageFragment  extends Fragment{
 				else
 					seekBar3.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.rate[getPosition()][2] = i;
+				arrayUtil.rate[getPosition()][2] = i;
             }
 
             @Override
@@ -204,7 +208,7 @@ public class PageFragment  extends Fragment{
 				else
 					seekBar4.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.rate[getPosition()][3] = i;
+				arrayUtil.rate[getPosition()][3] = i;
             }
 
             @Override
@@ -218,7 +222,7 @@ public class PageFragment  extends Fragment{
 				else
 					seekBar5.setEnabled(true);
                 LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-                settingActivity.rate[getPosition()][4] = i;
+				arrayUtil.rate[getPosition()][4] = i;
             }
 
             @Override
@@ -226,19 +230,15 @@ public class PageFragment  extends Fragment{
 
         edText.addTextChangedListener(new TextWatcher() {
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-			}
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-			}
+			public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
 			@Override
 			public void afterTextChanged(Editable s) {
 				LightSettingActivity settingActivity = (LightSettingActivity)getActivity();
-				settingActivity.time[getPosition()] = s.toString();
+				arrayUtil.times[getPosition()] = s.toString();
 			}
 		});
 	}

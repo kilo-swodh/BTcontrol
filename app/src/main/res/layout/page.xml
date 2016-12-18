@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="100%亮度"
+            android:text="30%亮度"
             android:layout_gravity="end"
             />
     </LinearLayout>
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="100%亮度"
+            android:text="30%亮度"
             android:layout_gravity="end"
             />
     </LinearLayout>
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="100%亮度"
+            android:text="30%亮度"
             android:layout_gravity="end"
             />
     </LinearLayout>
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="100%亮度"
+            android:text="30%亮度"
             android:layout_gravity="end"
             />
     </LinearLayout>
@@ -157,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="100%亮度"
+            android:text="30%亮度"
             android:layout_gravity="end"
             />
     </LinearLayout>
