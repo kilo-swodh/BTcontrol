@@ -243,28 +243,6 @@ public class PageFragment  extends Fragment{
 		});
 	}
 
-
-
-	public Bundle getInfoBundle(){
-		Bundle bundle = new Bundle();
-		bundle.putString("time",edText.getText().toString());
-		bundle.putIntArray("rate",new int[]{
-				spinner1.getSelectedItemPosition(),
-				spinner2.getSelectedItemPosition(),
-				spinner3.getSelectedItemPosition(),
-				spinner4.getSelectedItemPosition(),
-				spinner5.getSelectedItemPosition()
-		});
-		bundle.putIntArray("light",new int[]{
-				seekBar1.getProgress(),
-				seekBar2.getProgress(),
-				seekBar3.getProgress(),
-				seekBar4.getProgress(),
-				seekBar5.getProgress(),
-		});
-		return bundle;
-	}
-
     public void setPosition(int position){
         this.position = position;
     }

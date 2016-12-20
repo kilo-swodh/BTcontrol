@@ -5,10 +5,10 @@ package com.example.a45556.btcontrol.utils;
  */
 
 public class ArrayUtil {
-    public static int[][] rate = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
-    public static int[][] light = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
-    public static String[] times = new String[]{"0","0","0","0","0","0"};
-    public static int[] lastLight = {0,0,0,0,0};
+    public int[][] rate = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
+    public int[][] light = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
+    public String[] times = new String[]{"0","0","0","0","0","0"};
+    public int[] lastLight = {0,0,0,0,0};
 
     private static ArrayUtil s = null;
     private ArrayUtil(){}

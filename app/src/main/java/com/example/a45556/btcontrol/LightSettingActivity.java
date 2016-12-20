@@ -1,10 +1,11 @@
 package com.example.a45556.btcontrol;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -18,11 +19,6 @@ import github.chenupt.multiplemodel.viewpager.ModelPagerAdapter;
 import github.chenupt.multiplemodel.viewpager.PagerManager;
 import github.chenupt.springindicator.SpringIndicator;
 
-import static com.example.a45556.btcontrol.utils.ArrayUtil.lastLight;
-import static com.example.a45556.btcontrol.utils.ArrayUtil.light;
-import static com.example.a45556.btcontrol.utils.ArrayUtil.rate;
-import static com.example.a45556.btcontrol.utils.ArrayUtil.times;
-
 public class LightSettingActivity extends FragmentActivity {
     List<Integer> validPositons;
 
@@ -31,6 +27,7 @@ public class LightSettingActivity extends FragmentActivity {
 	private FragmentManager fragmentManager;
 	private ImageButton btnRun;
     private ArrayUtil arrayUtil;
+    private ArrayList<String> allCmd;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -54,18 +51,25 @@ public class LightSettingActivity extends FragmentActivity {
         arrayUtil = ArrayUtil.getInstance();
         for (int i =0 ;i<6;i++){                        //清理上一次的记录
             for (int j = 0;j<5;j++){
-                rate[i][j] = 0;
-                light[i][j] = 0;
+                arrayUtil.rate[i][j] = 0;
+                arrayUtil.light[i][j] = 0;
             }
-            times[i] = "0";
+            arrayUtil.times[i] = "0";
         }
         for (int i =0; i<5;i++){
-            lastLight[i] = 0;
+            arrayUtil.lastLight[i] = 0;
         }
         btnRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ParseData();
+                if (!allCmd.isEmpty()){
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("cmd",allCmd);
+                    intent.putExtras(bundle);
+                    setResult(Activity.RESULT_OK,intent);
+                }
                 finish();
             }
         });
@@ -78,19 +82,23 @@ public class LightSettingActivity extends FragmentActivity {
     }
 
     private void ParseData(){
+        allCmd = new ArrayList<>();
         validPositons = new ArrayList<>();
-        for (int i =0;i < times.length;i++){
-            String time = times[i];
+        for (int i =0;i < arrayUtil.times.length;i++){
+            String time = arrayUtil.times[i];
             if (time != "0" && time != "00" && time != "000"){
                 validPositons.add(i);
             }
         }
         for (Integer i : validPositons){
             List<String> cmd = getCmdString(i.intValue());
-            Log.d("Kilo", "Position: iiiiiiiiiiiiiiiiiiiiis "+ i);
-            Log.d("Kilo", "Time: iiiiiiiiiiiis "+ times[i]);
-            for (String str:cmd)
-                Log.d("Kilo", str);
+            allCmd.add(arrayUtil.times[i]);
+            //Log.d("Kilo", "Position: iiiiiiiiiiiiiiiiiiiiis "+ i);
+            //Log.d("Kilo", "Time: iiiiiiiiiiiis "+ arrayUtil.times[i]);
+            for (String str:cmd){
+                allCmd.add(str);
+                //Log.d("Kilo", str);
+            }
         }
     }
 
@@ -99,21 +107,21 @@ public class LightSettingActivity extends FragmentActivity {
         StringBuilder builder;
         for (int i = 0;i < 5;i++){
             builder = new StringBuilder();
-            if (rate[position][i] == 0){
+            if (arrayUtil.rate[position][i] == 0){
                 if (position == 0){
                     builder.append("$$"+(i+1)+"#");
-                    builder.append("0&"+light[position][i]+"*");
+                    builder.append("0&"+arrayUtil.light[position][i]+"*");
                     cmd.add(builder.toString());
-                    lastLight[i] = light[position][i];
+                    arrayUtil.lastLight[i] = arrayUtil.light[position][i];
                 }else {
                     builder.append("$$"+(i+1)+"#");
-                    builder.append(lastLight[i]+"&"+light[position][i]+"*");
+                    builder.append(arrayUtil.lastLight[i]+"&"+arrayUtil.light[position][i]+"*");
                     cmd.add(builder.toString());
-                    lastLight[i] = light[position][i];
+                    arrayUtil.lastLight[i] = arrayUtil.light[position][i];
                 }
             }else {
                 builder.append("%%"+(i+1));
-                switch (rate[position][i]){
+                switch (arrayUtil.rate[position][i]){
                     case 1:
                         builder.append("a*");
                         break;
@@ -133,5 +141,4 @@ public class LightSettingActivity extends FragmentActivity {
 	private List<String> getTitles(){
         return Lists.newArrayList("Step1", "Step2", "Step3", "Step4","Step5","Step6");
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.a45556.btcontrol;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -20,6 +21,11 @@ import android.widget.Toast;
 import com.example.a45556.btcontrol.bluetooth.BluetoothChatService;
 import com.example.a45556.btcontrol.bluetooth.DeviceListActivity;
 import com.example.a45556.btcontrol.utils.PreferenceUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.example.a45556.btcontrol.R.id.tv_info_led1;
 import static com.example.a45556.btcontrol.R.id.tv_info_led2;
@@ -43,12 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
+    private static final int REQUEST_CMD = 3;
 
     private BluetoothAdapter mBluetoothAdapter = null;
     private BluetoothChatService mChatService = null;
     private String mConnectedDeviceName = null;
 
     private static StringBuilder deLost = null;
+    private List<String> stringArrayList;
+    private StringBuilder cmdBuild;
+    private boolean isReadyNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +146,65 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
                 break;
+
+            case REQUEST_CMD:
+                if (resultCode == Activity.RESULT_OK) {
+                    Bundle bundle = data.getExtras();
+                    if (mChatService == null ||(mChatService.getState() != BluetoothChatService.STATE_CONNECTED)) {
+                        Toast.makeText(this, R.string.not_connected, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    stringArrayList = bundle.getStringArrayList("cmd");
+                    sendCustomCmd((ArrayList<String>) stringArrayList);
+                    Toast.makeText(this,"成功预约",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this,"未预约",Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+
+    private void sendCustomCmd(final ArrayList<String> cmd){
+        long currentTime = 0;
+        long taskTime = 0;
+        int count = 0;
+        isReadyNext = true;
+        cmdBuild = new StringBuilder();
+        for ( String mess : cmd){
+            Log.d("count is ",count+"");
+            Log.d("mess is ",mess +"");
+            if (mess.startsWith("$$") || mess.startsWith("%%")){
+                cmdBuild.append(mess);
+                cmdBuild.append("Fuck");
+            }else {
+                taskTime = Long.parseLong(mess);
+            }
+            if (count >= 5){
+                isReadyNext = false;
+                //long tempTime = currentTime*1000;
+                Log.d("Fucker cmdBuild size is",cmdBuild.length()+"");
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        String[] cmdArry = cmdBuild.toString().split("Fuck");
+                        Log.d("TimeTask启动了,当前cmdBuild是", cmdBuild.toString());
+                        for (String cmd : cmdArry){
+                            Log.d("发送了命令 ", cmd);
+                            sendMessage(cmd);
+                        }
+                        isReadyNext = true;
+                    }
+                },currentTime*900);
+                while(!isReadyNext){
+                    ProgressDialog dialog = ProgressDialog.show(this,"正在预约","请稍后");
+                }
+                Log.d("currentTime is ",currentTime+"");
+                cmdBuild.delete(0,cmdBuild.length());
+                count = 0;
+                currentTime += taskTime;
+                continue;
+            }
+            count++;
         }
     }
 
@@ -319,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent serverIntent = new Intent(MainActivity.this, LightSettingActivity.class);
-                startActivity(serverIntent);
+                startActivityForResult(serverIntent, REQUEST_CMD);
             }
         });
     }
