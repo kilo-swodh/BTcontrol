@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             />
         <TextView
-            android:text="本APP及其Arduino作者为Kilo\n该项目已上传Github,地址:xxxxxxxxxxxxxx\nArduino项目地址:xxxxxxxxxxxxx"
+            android:text="@string/address"
             android:textSize="20sp"
             android:autoLink="web"
             android:textColor="@color/colorPrimaryText"

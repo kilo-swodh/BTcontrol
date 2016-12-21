@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        dialog.cancel();
         if (mChatService != null) mChatService.stop();
         if(mBluetoothAdapter.isEnabled()){
             mBluetoothAdapter.disable();
@@ -180,28 +179,22 @@ public class MainActivity extends AppCompatActivity {
         isReadyNext = true;
         cmdBuild = new StringBuilder();
         for ( String mess : cmd){
-            Log.d("count is ",count+"");
-            Log.d("mess is ",mess +"");
             if (mess.startsWith("$$") || mess.startsWith("%%")){
                 cmdBuild.append(mess);
                 cmdBuild.append("-");
             }else {
                 if(!"".equals(mess)){
                     taskTime = Long.parseLong(mess);
-                    Log.d("sendCustomCmd", "mess内容为空");
                 }
                 else
                     taskTime = 1;
             }
             if (count >= 5){
                 isReadyNext = false;
-                //long tempTime = currentTime*1000;
-                Log.d("Fucker cmdBuild size is",cmdBuild.length()+"");
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         String[] cmdArry = cmdBuild.toString().split("-");         //间隔符
-                        Log.d("TimeTask启动了,当前cmdBuild是", cmdBuild.toString());
                         for (String cmd : cmdArry){
                             Log.d("发送了命令 ", cmd);
                             sendMessage(cmd);
@@ -210,14 +203,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },currentTime*650);
                 if(!isReadyNext){
-                    Log.d("ReadyNext ", isReadyNext+"");
                     while (true){
                         if (isReadyNext){
                             break;
                         }
                     }
                 }
-                Log.d("currentTime is ",currentTime+"");
                 cmdBuild.delete(0,cmdBuild.length());
                 count = 0;
                 currentTime += taskTime;
@@ -231,7 +222,6 @@ public class MainActivity extends AppCompatActivity {
                 sendMessage("~~");
             }
         },currentTime*650);
-        Log.d("Handler is", mHandler.toString());
         mHandler.obtainMessage(MESSAGE_DIALOG).sendToTarget();
     }
 
@@ -483,10 +473,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     break;
                 case MESSAGE_DIALOG:
-                    Log.d("dialog is", dialog.toString());
                     if (dialog != null)
                         dialog.dismiss();
-                    Log.d("我的天", "居然执行到了handleMessage:");
                     break;
             }
         }
