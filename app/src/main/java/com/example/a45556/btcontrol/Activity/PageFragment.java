@@ -1,4 +1,4 @@
-package com.example.a45556.btcontrol;
+package com.example.a45556.btcontrol.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +15,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.a45556.btcontrol.R;
 import com.example.a45556.btcontrol.utils.ArrayUtil;
 
 import static com.example.a45556.btcontrol.R.layout.page;

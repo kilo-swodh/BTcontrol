@@ -9,7 +9,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/backgroud"
-    tools:context="com.example.a45556.btcontrol.MainActivity">
+    tools:context="com.example.a45556.btcontrol.activity.MainActivity">
+
+    <ImageButton
+        android:layout_alignParentEnd="true"
+        android:layout_margin="12dp"
+        android:id="@+id/btn_info"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@mipmap/wenhao"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:text="闪烁"

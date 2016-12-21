@@ -1,4 +1,4 @@
-package com.example.a45556.btcontrol;
+package com.example.a45556.btcontrol.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -18,9 +18,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a45556.btcontrol.R;
 import com.example.a45556.btcontrol.bluetooth.BluetoothChatService;
 import com.example.a45556.btcontrol.bluetooth.DeviceListActivity;
-import com.example.a45556.btcontrol.utils.PreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,7 @@ import static com.example.a45556.btcontrol.R.id.tv_info_led4;
 import static com.example.a45556.btcontrol.R.id.tv_info_led5;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.DEVICE_NAME;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_DEVICE_NAME;
+import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_DIALOG;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_READ;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_STATE_CHANGE;
 import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.MESSAGE_TOAST;
@@ -42,7 +43,7 @@ import static com.example.a45556.btcontrol.bluetooth.BluetoothChatService.TOAST;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btnSettings,btnCustom;
+    private ImageButton btnSettings,btnCustom,btnInfo;
     private SeekBar skLed1,skLed2,skLed3,skLed4,skLed5;
     private TextView tvLED1,tvLED2,tvLED3,tvLED4,tvLED5;
     private CheckBox cb1,cb2,cb3,cb4,cb5;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> stringArrayList;
     private StringBuilder cmdBuild;
     private boolean isReadyNext;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btnSettings =(ImageButton)findViewById(R.id.settings);
         btnCustom = (ImageButton)findViewById(R.id.custom);
+        btnInfo = (ImageButton)findViewById(R.id.btn_info);
 
         skLed1 = (SeekBar)findViewById(R.id.sk_live_led1);
         tvLED1 = (TextView)findViewById(tv_info_led1);
@@ -115,11 +118,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
+        dialog.cancel();
         if (mChatService != null) mChatService.stop();
         if(mBluetoothAdapter.isEnabled()){
             mBluetoothAdapter.disable();
         }
+        super.onDestroy();
     }
 
     @Override
@@ -155,8 +159,13 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     stringArrayList = bundle.getStringArrayList("cmd");
-                    sendCustomCmd((ArrayList<String>) stringArrayList);
-                    Toast.makeText(this,"成功预约",Toast.LENGTH_SHORT).show();
+                    dialog = ProgressDialog.show(this,"正在预约","请稍后",true,true);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            sendCustomCmd((ArrayList<String>) stringArrayList);
+                        }
+                    }).start();
                 }else {
                     Toast.makeText(this,"未预约",Toast.LENGTH_SHORT).show();
                 }
@@ -175,9 +184,14 @@ public class MainActivity extends AppCompatActivity {
             Log.d("mess is ",mess +"");
             if (mess.startsWith("$$") || mess.startsWith("%%")){
                 cmdBuild.append(mess);
-                cmdBuild.append("Fuck");
+                cmdBuild.append("-");
             }else {
-                taskTime = Long.parseLong(mess);
+                if(!"".equals(mess)){
+                    taskTime = Long.parseLong(mess);
+                    Log.d("sendCustomCmd", "mess内容为空");
+                }
+                else
+                    taskTime = 1;
             }
             if (count >= 5){
                 isReadyNext = false;
@@ -186,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        String[] cmdArry = cmdBuild.toString().split("Fuck");
+                        String[] cmdArry = cmdBuild.toString().split("-");         //间隔符
                         Log.d("TimeTask启动了,当前cmdBuild是", cmdBuild.toString());
                         for (String cmd : cmdArry){
                             Log.d("发送了命令 ", cmd);
@@ -194,9 +208,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                         isReadyNext = true;
                     }
-                },currentTime*900);
-                while(!isReadyNext){
-                    ProgressDialog dialog = ProgressDialog.show(this,"正在预约","请稍后");
+                },currentTime*650);
+                if(!isReadyNext){
+                    Log.d("ReadyNext ", isReadyNext+"");
+                    while (true){
+                        if (isReadyNext){
+                            break;
+                        }
+                    }
                 }
                 Log.d("currentTime is ",currentTime+"");
                 cmdBuild.delete(0,cmdBuild.length());
@@ -206,6 +225,14 @@ public class MainActivity extends AppCompatActivity {
             }
             count++;
         }
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                sendMessage("~~");
+            }
+        },currentTime*650);
+        Log.d("Handler is", mHandler.toString());
+        mHandler.obtainMessage(MESSAGE_DIALOG).sendToTarget();
     }
 
     /**
@@ -375,6 +402,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
         /*功能键部分*/
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -430,25 +465,12 @@ public class MainActivity extends AppCompatActivity {
                     byte[] writeBuf = (byte[]) msg.obj;
                     // construct a string from the buffer
                     String writeMessage = new String(writeBuf);
-                    String result = "";
-                    if(writeMessage.equals(PreferenceUtil.getInstance().getStopCode())){
-                        result = "停车";
-                    }else if(writeMessage.equals(PreferenceUtil.getInstance().getLeftCode())){
-                        result = "左转";
-                    }else if(writeMessage.equals(PreferenceUtil.getInstance().getRightCode())){
-                        result = "右转";
-                    }else if(writeMessage.equals(PreferenceUtil.getInstance().getUpCode())){
-                        result = "前进";
-                    }else if(writeMessage.equals(PreferenceUtil.getInstance().getDownCode())){
-                        result = "后退";
-                    }
-                    Log.d("蓝牙小车:",result);
                     break;
                 case MESSAGE_READ:
                     byte[] readBuf = (byte[]) msg.obj;
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
-                    Log.d("kilo","readMessage:"+readMessage);
+                    Log.d("BlueTooth","readMessage:"+readMessage);
                     break;
                 case MESSAGE_DEVICE_NAME:
                     // save the connected device's name
@@ -459,6 +481,12 @@ public class MainActivity extends AppCompatActivity {
                 case MESSAGE_TOAST:
                     Toast.makeText(getApplicationContext(), msg.getData().getString(TOAST),
                             Toast.LENGTH_SHORT).show();
+                    break;
+                case MESSAGE_DIALOG:
+                    Log.d("dialog is", dialog.toString());
+                    if (dialog != null)
+                        dialog.dismiss();
+                    Log.d("我的天", "居然执行到了handleMessage:");
                     break;
             }
         }

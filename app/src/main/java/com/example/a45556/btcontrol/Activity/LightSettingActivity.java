@@ -1,4 +1,4 @@
-package com.example.a45556.btcontrol;
+package com.example.a45556.btcontrol.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.a45556.btcontrol.R;
 import com.example.a45556.btcontrol.utils.ArrayUtil;
 import com.google.common.collect.Lists;
 
@@ -23,7 +24,7 @@ public class LightSettingActivity extends FragmentActivity {
     List<Integer> validPositons;
 
 	private ViewPager viewPager;
-	private List<com.example.a45556.btcontrol.PageFragment> fragments;
+	private List<PageFragment> fragments;
 	private FragmentManager fragmentManager;
 	private ImageButton btnRun;
     private ArrayUtil arrayUtil;

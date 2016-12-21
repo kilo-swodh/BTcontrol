@@ -1,4 +1,4 @@
-package com.example.a45556.btcontrol;
+package com.example.a45556.btcontrol.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.a45556.btcontrol.R;
 import com.example.a45556.btcontrol.utils.PreferenceUtil;
 
 import java.util.LinkedHashMap;

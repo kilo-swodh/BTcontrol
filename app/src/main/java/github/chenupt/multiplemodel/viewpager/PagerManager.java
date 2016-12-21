@@ -19,7 +19,7 @@ package github.chenupt.multiplemodel.viewpager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.example.a45556.btcontrol.PageFragment;
+import com.example.a45556.btcontrol.activity.PageFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
