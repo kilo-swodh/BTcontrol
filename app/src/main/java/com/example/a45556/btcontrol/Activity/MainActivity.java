@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton btnSettings,btnCustom,btnInfo;
     private SeekBar skLed1,skLed2,skLed3,skLed4,skLed5;
-    private TextView tvLED1,tvLED2,tvLED3,tvLED4,tvLED5;
+    private TextView tvLED1,tvLED2,tvLED3,tvLED4,tvLED5,tvTip;
     private CheckBox cb1,cb2,cb3,cb4,cb5;
 
     private static final int REQUEST_CONNECT_DEVICE = 1;
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         tvLED4 = (TextView)findViewById(tv_info_led4);
         skLed5 = (SeekBar)findViewById(R.id.sk_live_led5);
         tvLED5 = (TextView)findViewById(tv_info_led5);
+        tvTip = (TextView)findViewById(R.id.tv_tip);
 
         cb1 = (CheckBox)findViewById(R.id.cb_1);
         cb2 = (CheckBox)findViewById(R.id.cb_2);
@@ -201,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         isReadyNext = true;
                     }
-                },currentTime*650);
+                },currentTime*1000);
                 if(!isReadyNext){
                     while (true){
                         if (isReadyNext){
@@ -211,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 cmdBuild.delete(0,cmdBuild.length());
                 count = 0;
-                currentTime += taskTime;
+                currentTime = taskTime;
                 continue;
             }
             count++;
@@ -221,8 +222,26 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 sendMessage("~~");
             }
-        },currentTime*650);
+        },currentTime*1000);
         mHandler.obtainMessage(MESSAGE_DIALOG).sendToTarget();
+    }
+
+    private void resetLights(){
+        cb1.setChecked(false);
+        cb2.setChecked(false);
+        cb3.setChecked(false);
+        cb4.setChecked(false);
+        cb5.setChecked(false);
+        skLed1.setProgress(70);
+        skLed2.setProgress(70);
+        skLed3.setProgress(70);
+        skLed4.setProgress(70);
+        skLed5.setProgress(70);
+        tvLED1.setText("100%亮度");
+        tvLED2.setText("100%亮度");
+        tvLED3.setText("100%亮度");
+        tvLED4.setText("100%亮度");
+        tvLED5.setText("100%亮度");
     }
 
     /**
@@ -467,14 +486,17 @@ public class MainActivity extends AppCompatActivity {
                     mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);
                     Toast.makeText(getApplicationContext(), "连接上 "
                             + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
+                    tvTip.setVisibility(View.GONE);
                     break;
                 case MESSAGE_TOAST:
                     Toast.makeText(getApplicationContext(), msg.getData().getString(TOAST),
                             Toast.LENGTH_SHORT).show();
                     break;
                 case MESSAGE_DIALOG:
-                    if (dialog != null)
+                    if (dialog != null){
                         dialog.dismiss();
+                        resetLights();
+                    }
                     break;
             }
         }

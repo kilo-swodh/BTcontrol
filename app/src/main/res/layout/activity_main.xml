@@ -11,6 +11,14 @@
     android:background="@color/backgroud"
     tools:context="com.example.a45556.btcontrol.activity.MainActivity">
 
+    <TextView
+        android:id="@+id/tv_tip"
+        android:text="Tip: 在进行操作前，\n请务必先连接蓝牙"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/btn_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ImageButton
         android:layout_alignParentEnd="true"
         android:layout_margin="12dp"
@@ -29,7 +37,9 @@
         android:id="@+id/cb_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_1"/>
+        android:layout_alignTop="@+id/ll_1"
+        android:background="#6699ff"
+        />
     <LinearLayout
         android:id="@+id/ll_1"
         android:layout_margin="30dp"
@@ -40,7 +50,7 @@
         >
         <SeekBar
             android:id="@+id/sk_live_led1"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="20dp"
             android:max="70"
             android:progress="70"
@@ -59,7 +69,8 @@
         android:id="@+id/cb_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_2"/>
+        android:layout_alignTop="@+id/ll_2"
+        android:background="#7cfc00"/>
     <LinearLayout
         android:id="@+id/ll_2"
         android:layout_margin="30dp"
@@ -69,7 +80,7 @@
         android:layout_above="@+id/ll_3">
         <SeekBar
             android:id="@+id/sk_live_led2"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="20dp"
             android:max="70"
             android:progress="70"
@@ -88,7 +99,8 @@
         android:id="@+id/cb_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_3"/>
+        android:layout_alignTop="@+id/ll_3"
+        android:background="#ffffff"/>
     <LinearLayout
         android:id="@+id/ll_3"
         android:layout_margin="30dp"
@@ -98,7 +110,7 @@
         android:layout_centerInParent="true">
         <SeekBar
             android:id="@+id/sk_live_led3"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="20dp"
             android:max="70"
             android:progress="70"
@@ -117,7 +129,8 @@
         android:id="@+id/cb_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_4"/>
+        android:layout_alignTop="@+id/ll_4"
+        android:background="#ffcc00"/>
     <LinearLayout
         android:id="@+id/ll_4"
         android:layout_margin="30dp"
@@ -125,13 +138,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/ll_3">
+
         <SeekBar
             android:id="@+id/sk_live_led4"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="20dp"
             android:max="70"
             android:progress="70"
             />
+
         <TextView
             android:id="@+id/tv_info_led4"
             android:layout_width="wrap_content"
@@ -146,7 +161,8 @@
         android:id="@+id/cb_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_5"/>
+        android:layout_alignTop="@+id/ll_5"
+        android:background="#ff6347"/>
     <LinearLayout
         android:id="@+id/ll_5"
         android:layout_margin="30dp"
@@ -156,7 +172,7 @@
         android:layout_below="@+id/ll_4">
         <SeekBar
             android:id="@+id/sk_live_led5"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="20dp"
             android:max="70"
             android:progress="70"

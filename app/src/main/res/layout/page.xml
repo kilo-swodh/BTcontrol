@@ -15,7 +15,8 @@
         android:id="@+id/sp_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_1"/>
+        android:layout_alignTop="@+id/ll_1"
+        android:background="#6699ff"/>
     <LinearLayout
         android:id="@+id/ll_1"
         android:layout_margin="30dp"
@@ -46,7 +47,8 @@
         android:id="@+id/sp_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_2"/>
+        android:layout_alignTop="@+id/ll_2"
+        android:background="#7cfc00"/>
     <LinearLayout
         android:id="@+id/ll_2"
         android:layout_margin="30dp"
@@ -76,7 +78,8 @@
         android:id="@+id/sp_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_3"/>
+        android:layout_alignTop="@+id/ll_3"
+        android:background="#ffffff"/>
     <LinearLayout
         android:id="@+id/ll_3"
         android:layout_margin="30dp"
@@ -106,7 +109,8 @@
         android:id="@+id/sp_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_4"/>
+        android:layout_alignTop="@+id/ll_4"
+        android:background="#ffcc00"/>
     <LinearLayout
         android:id="@+id/ll_4"
         android:layout_margin="30dp"
@@ -136,7 +140,8 @@
         android:id="@+id/sp_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_5"/>
+        android:layout_alignTop="@+id/ll_5"
+        android:background="#ff6347"/>
     <LinearLayout
         android:id="@+id/ll_5"
         android:layout_margin="30dp"
