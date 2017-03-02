@@ -221,9 +221,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 sendMessage("~~");
+                mHandler.obtainMessage(MESSAGE_DIALOG).sendToTarget();
             }
         },currentTime*1000);
-        mHandler.obtainMessage(MESSAGE_DIALOG).sendToTarget();
+
     }
 
     private void resetLights(){

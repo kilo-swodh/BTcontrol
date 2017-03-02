@@ -21,7 +21,7 @@
 
     <ImageButton
         android:layout_alignParentEnd="true"
-        android:layout_margin="12dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/btn_info"
         android:layout_width="35dp"
         android:layout_height="35dp"

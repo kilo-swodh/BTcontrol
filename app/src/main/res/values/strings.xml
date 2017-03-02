@@ -22,6 +22,6 @@
     <!-- Options Menu -->
     <string name="connect">连接其他蓝牙设备</string>
     <string name="discoverable">设置本机蓝牙可发现</string>
-    <string name="opration_tip">1.本蓝牙控制APP必须使用对应的Arduino程序.\n2.在进行任意操作前,请务必确认已连接蓝牙设备.\n3.预约功能的进度框消失后,表明正在进行最后一个场景的变化,请耐心等待.\n4.本程序旨在控制5组灯泡的亮暗和闪烁,并且做多可以6步细调预约.</string>
-    <string name="address">本APP及其Arduino作者为Kilo\n该项目已上传Github,地址:https://github.com/kilo-swodh/BTcontrol/\nArduino项目地址:https://github.com/kilo-swodh/ArduinoBTcontrol</string>
+    <string name="opration_tip">1.本蓝牙控制APP必须使用对应的Arduino程序.\n2.第一次使用前,请在系统的蓝牙界面进行配对,之后每次只需在程序右下角连接即可.\n3.在进行任意操作前,请务必确认已连接蓝牙设备.\n4.本程序旨在控制5组灯泡的亮暗和闪烁,并且做多可以6步细调预约,未设置时间的分页不会参与预约.</string>
+    <string name="address">APP及其Arduino作者为 Kilo\n\n该项目已上传Github,APP项目地址:https://github.com/kilo-swodh/BTcontrol/\nArduino项目地址:https://github.com/kilo-swodh/ArduinoBTcontrol</string>
 </resources>

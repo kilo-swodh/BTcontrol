@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroud">
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_margin="10dp"
+        android:layout_margin="7dp"
         android:background="@mipmap/back"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="50dp"
-        android:layout_margin="20dp"
-        >
+        android:paddingTop="40dp"
+        android:layout_margin="15dp">
         <TextView
-            android:text="蓝牙控制舞台灯光v1.0"
-            android:paddingBottom="20dp"
+            android:text="蓝牙控制舞台灯光v1.0.1"
+            android:paddingBottom="10dp"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-
         <TextView
             android:text="使用说明:"
             android:textSize="25sp"
@@ -32,29 +32,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-        <TextView
-            android:text="@string/opration_tip"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            app:cardCornerRadius="6dp">
+            <TextView
+                android:text="@string/opration_tip"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                />
+        </android.support.v7.widget.CardView>
+
         <TextView
             android:text="版权声明:"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:textSize="25sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-        <TextView
-            android:text="@string/address"
-            android:textSize="20sp"
-            android:autoLink="web"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            app:cardCornerRadius="6dp">
+            <TextView
+                android:text="@string/address"
+                android:textSize="20sp"
+                android:autoLink="web"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                />
+        </android.support.v7.widget.CardView>
     </LinearLayout>
-
 </RelativeLayout>
