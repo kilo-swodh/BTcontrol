@@ -13,7 +13,8 @@
 
     <TextView
         android:id="@+id/tv_tip"
-        android:text="Tip: 在进行操作前，\n请务必先连接蓝牙"
+        android:text="Tip: 在进行操作前，\n请务必先点右下角连接蓝牙"
+        android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@+id/btn_info"
         android:layout_width="wrap_content"
@@ -38,7 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ll_1"
-        android:background="#6699ff"
         />
     <LinearLayout
         android:id="@+id/ll_1"
@@ -69,8 +69,7 @@
         android:id="@+id/cb_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_2"
-        android:background="#7cfc00"/>
+        android:layout_alignTop="@+id/ll_2"/>
     <LinearLayout
         android:id="@+id/ll_2"
         android:layout_margin="30dp"
@@ -99,8 +98,7 @@
         android:id="@+id/cb_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_3"
-        android:background="#ffffff"/>
+        android:layout_alignTop="@+id/ll_3"/>
     <LinearLayout
         android:id="@+id/ll_3"
         android:layout_margin="30dp"
@@ -129,8 +127,7 @@
         android:id="@+id/cb_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_4"
-        android:background="#ffcc00"/>
+        android:layout_alignTop="@+id/ll_4"/>
     <LinearLayout
         android:id="@+id/ll_4"
         android:layout_margin="30dp"
@@ -161,8 +158,7 @@
         android:id="@+id/cb_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ll_5"
-        android:background="#ff6347"/>
+        android:layout_alignTop="@+id/ll_5"/>
     <LinearLayout
         android:id="@+id/ll_5"
         android:layout_margin="30dp"

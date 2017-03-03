@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         btnSettings =(ImageButton)findViewById(R.id.settings);
         btnCustom = (ImageButton)findViewById(R.id.custom);
         btnInfo = (ImageButton)findViewById(R.id.btn_info);
-
         skLed1 = (SeekBar)findViewById(R.id.sk_live_led1);
         tvLED1 = (TextView)findViewById(tv_info_led1);
         skLed2 = (SeekBar)findViewById(R.id.sk_live_led2);
@@ -81,21 +80,19 @@ public class MainActivity extends AppCompatActivity {
         skLed5 = (SeekBar)findViewById(R.id.sk_live_led5);
         tvLED5 = (TextView)findViewById(tv_info_led5);
         tvTip = (TextView)findViewById(R.id.tv_tip);
-
         cb1 = (CheckBox)findViewById(R.id.cb_1);
         cb2 = (CheckBox)findViewById(R.id.cb_2);
         cb3 = (CheckBox)findViewById(R.id.cb_3);
         cb4 = (CheckBox)findViewById(R.id.cb_4);
         cb5 = (CheckBox)findViewById(R.id.cb_5);
-
         initListener();
+
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {
             Toast.makeText(this, "手机无蓝牙设备", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }else{
-
             if(!mBluetoothAdapter.isEnabled()){
                 Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableIntent,REQUEST_ENABLE_BT);

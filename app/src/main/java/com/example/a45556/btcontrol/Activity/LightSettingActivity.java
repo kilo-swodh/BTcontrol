@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,8 +23,6 @@ public class LightSettingActivity extends FragmentActivity {
     List<Integer> validPositons;
 
 	private ViewPager viewPager;
-	private List<PageFragment> fragments;
-	private FragmentManager fragmentManager;
 	private ImageButton btnRun;
     private ArrayUtil arrayUtil;
     private ArrayList<String> allCmd;
@@ -94,11 +91,8 @@ public class LightSettingActivity extends FragmentActivity {
         for (Integer i : validPositons){
             List<String> cmd = getCmdString(i.intValue());
             allCmd.add(arrayUtil.times[i]);
-            //Log.d("Kilo", "Position: iiiiiiiiiiiiiiiiiiiiis "+ i);
-            //Log.d("Kilo", "Time: iiiiiiiiiiiis "+ arrayUtil.times[i]);
             for (String str:cmd){
                 allCmd.add(str);
-                //Log.d("Kilo", str);
             }
         }
     }
