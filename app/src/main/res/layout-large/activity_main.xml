@@ -22,10 +22,10 @@
 
     <ImageButton
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="24dp"
         android:id="@+id/btn_info"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@mipmap/wenhao"/>
 
     <android.support.v7.widget.AppCompatTextView
@@ -42,7 +42,7 @@
         />
     <LinearLayout
         android:id="@+id/ll_1"
-        android:layout_margin="30dp"
+        android:layout_margin="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -50,8 +50,8 @@
         >
         <SeekBar
             android:id="@+id/sk_live_led1"
-            android:layout_width="280dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:max="70"
             android:progress="70"
             />
@@ -72,15 +72,15 @@
         android:layout_alignTop="@+id/ll_2"/>
     <LinearLayout
         android:id="@+id/ll_2"
-        android:layout_margin="30dp"
+        android:layout_margin="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_above="@+id/ll_3">
         <SeekBar
             android:id="@+id/sk_live_led2"
-            android:layout_width="280dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:max="70"
             android:progress="70"
             />
@@ -101,15 +101,15 @@
         android:layout_alignTop="@+id/ll_3"/>
     <LinearLayout
         android:id="@+id/ll_3"
-        android:layout_margin="30dp"
+        android:layout_margin="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true">
         <SeekBar
             android:id="@+id/sk_live_led3"
-            android:layout_width="280dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:max="70"
             android:progress="70"
             />
@@ -130,7 +130,7 @@
         android:layout_alignTop="@+id/ll_4"/>
     <LinearLayout
         android:id="@+id/ll_4"
-        android:layout_margin="30dp"
+        android:layout_margin="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -138,8 +138,8 @@
 
         <SeekBar
             android:id="@+id/sk_live_led4"
-            android:layout_width="280dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:max="70"
             android:progress="70"
             />
@@ -161,15 +161,15 @@
         android:layout_alignTop="@+id/ll_5"/>
     <LinearLayout
         android:id="@+id/ll_5"
-        android:layout_margin="30dp"
+        android:layout_margin="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/ll_4">
         <SeekBar
             android:id="@+id/sk_live_led5"
-            android:layout_width="280dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:max="70"
             android:progress="70"
             />
@@ -185,8 +185,8 @@
 
     <ImageButton
         android:id="@+id/settings"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@mipmap/settings"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -194,8 +194,8 @@
 
     <ImageButton
         android:id="@+id/custom"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@mipmap/custom"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"

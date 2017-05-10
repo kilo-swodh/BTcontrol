@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
         btnSettings =(ImageButton)findViewById(R.id.settings);
         btnCustom = (ImageButton)findViewById(R.id.custom);
@@ -156,7 +158,8 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     stringArrayList = bundle.getStringArrayList("cmd");
-                    dialog = ProgressDialog.show(this,"正在预约","请稍后",true,true);
+                    dialog = ProgressDialog.show(this,"正在预约","操作进行中,请勿退出App",true,true);
+                    dialog.setCancelable(false);
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
